@@ -18,21 +18,23 @@
 }
 */
 
-const elem = document.querySelector("#validation-input");
-// console.log(elem);
-elem.onblur = addBorder;
 
-function addBorder() {
-  let num = elem.value.length;
-  let length = elem.getAttribute("data-length");
-  length = Number(length);
-  num = Number(num);
-  if (num === length) {
-    elem.classList.add("valid");
-  }
-  else {
-    elem.classList.add("invalid");
-  }
-  console.log(length, num);
-}
+const inputText = document.querySelector("#validation-input");
+console.log(inputText.getAttribute("data-length"));
 
+inputText.addEventListener('blur', event => {
+  if (event.target.value.length === Number.parseInt(inputText.getAttribute("data-length"))) {
+    inputText.classList.add('valid');
+
+    if (inputText.classList.contains('invalid')) {
+      inputText.classList.remove('invalid');
+    }
+
+  } else {
+    if (inputText.classList.contains('valid')) {
+      inputText.classList.remove('valid');
+    }
+    
+    inputText.classList.add('invalid');
+  }
+})

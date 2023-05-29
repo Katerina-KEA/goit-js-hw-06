@@ -13,14 +13,27 @@ const ingredients = [
   'Herbs',
   'Condiments',
 ];
-let ul = document.getElementById("ingredients");
-console.log(ul);
+// let ul = document.getElementById("ingredients");
+// console.log(ul);
 
-ingredients.forEach(function (ingrd) {
-  let li = document.createElement("li");
-  let text = document.createTextNode(ingrd);
-  li.appendChild(text);
-  // console.log(li);
-  ul.appendChild(li);
+// ingredients.forEach(function (ingrd) {
+//   let li = document.createElement("li");
+//   let text = document.createTextNode(ingrd);
+//   li.appendChild(text);
+//   // console.log(li);
+//   ul.appendChild(li);
 
-}) 
+// }) 
+
+const ingredientsList = document.querySelector("#ingredients");
+
+const ingredientsItems = ingredients.map(ingredient => {
+  const itemList = document.createElement('li');
+  itemList.classList.add('item');
+  itemList.textContent = ingredient;
+
+  return itemList;
+});
+console.log(ingredientsItems);
+
+ingredientsList.append(...ingredientsItems);

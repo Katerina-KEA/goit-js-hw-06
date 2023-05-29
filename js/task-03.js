@@ -21,7 +21,7 @@ const images = [
 
 
 
-let ul = document.querySelector(".gallery");
+// let ul = document.querySelector(".gallery");
 // variant 1
 // images.forEach(function (img) {
 //   let li = document.createElement("li");
@@ -33,8 +33,16 @@ let ul = document.querySelector(".gallery");
 // }); 
 
 // variant 2
-images.forEach(function (img) {
-  // let str = '<li><img src="' + img.url + '" alt="' + img.alt + '"></li>'; 
-  let str = `<li><img src="${img.url}" alt="${img.alt}"></li>`;
-  ul.insertAdjacentHTML("beforeEnd", str);
-}); 
+// images.forEach(function (img) {
+//   // let str = '<li><img src="' + img.url + '" alt="' + img.alt + '"></li>'; 
+//   let str = `<li><img src="${img.url}" alt="${img.alt}"></li>`;
+//   ul.insertAdjacentHTML("beforeEnd", str);
+// }); 
+
+const galleryList = document.querySelector('.gallery');
+const addGalleryItemList = images.map(image =>
+  `<li class="gallery-item"><img class="gallery_img" src="${image.url}" alt="${image.alt}"></li>`)
+  .join('');
+
+galleryList.insertAdjacentHTML("beforeEnd", addGalleryItemList);
+  console.log(galleryList);
